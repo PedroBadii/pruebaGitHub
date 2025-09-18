@@ -1,4 +1,4 @@
-#EJERCICIO ENTREGADO/TERMINADO
+                     #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
 '''
 Definir una función en Python que recibe un string y valida que sea una clave
 correcta. Para que sea correcta debe tener

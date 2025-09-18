@@ -1,4 +1,9 @@
-#EJERCICIO EN PROCESO
+                     #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
+'''
+funciona pero no cumple correctamente lo que pedían. Al parecer, quieren solo una función que tome una 
+fecha con formato 00/00/0000 sin ningún input y sin letras
+'''
+
 meses_31 = ['enero','marzo','mayo','julio','agosto','octubre', 'diciembre']
 meses_30 = ['abril','junio','septiembre','noviembre']
 
