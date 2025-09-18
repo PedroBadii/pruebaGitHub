@@ -1,4 +1,4 @@
-#EJERCICIO EN PROCESO
+                     #-------------EJERCICIO EN PROCESO--------------#
 '''
 Dada una tupla anidada de sabores de helados y particularidades, del tipo:
 sabores = (("chocolate", ("v", "c")), ("dulce de leche"), ("limón", ("v")), ("frutilla", ("c"))
@@ -16,8 +16,21 @@ posibles, incluidas por ejemplo aquellas que puedan devolver listas vacías. Tam
 def separar_sabores(sabores):
     '''
     >>> separar_sabores([('chocolate', ('v', 'c')), ('dulce de leche',), ('limón', ('v')), ('frutilla', ('c'))])
-    (['chocolate','limón'] ['chocolate','frutilla'])
-
+    (['chocolate', 'limón'], ['chocolate', 'frutilla'])
+    >>> separar_sabores([('banana', ('v')), ('naranja',), ('nesquick',), ('toddy',)])
+    (['banana'], [])
+    >>> separar_sabores([('pistacho', ('v', 'c')), ('crema del cielo', ('v')), ('bon o bon',),
+    ... ('ferrero rocher', ('v')), ('rafaelo', ('v'))])
+    (['pistacho', 'crema del cielo', 'ferrero rocher', 'rafaelo'], ['pistacho'])
+    >>> separar_sabores([('chocolate'), ('chocolate blanco', ('v', 'c')), ('chocolate granizado', ('c')), 
+    ... ('chocolate con almendras', ('v')), ('chocolate mocca', ('v', 'c')), ('chocolate ruso')])
+    (['chocolate blanco', 'chocolate con almendras', 'chocolate mocca'], ['chocolate blanco', 'chocolate granizado', 'chocolate mocca'])
+    >>> separar_sabores([('americana', ('c')), ('tramontana', ('v')), ('vainilla', ('c')), ('limon', ('v', 'c')),
+    ... ('menta granizada', ('v', 'c')), ('naranja', ('v', 'c')), ('banana split', ('c'))])
+    (['tramontana', 'limon', 'menta granizada', 'naranja'], ['americana', 'vainilla', 'limon', 'menta granizada', 'naranja', 'banana split'])
+    >>> separar_sabores([('bazooka',), ('monster',), ('coca cola', ('c')), ('picodulce',), 
+    ... ('tofi', ('c')), ('fernet', ), ('fizz acido', ('c')), ('maracuya',)])
+    ([], ['coca cola', 'tofi', 'fizz acido'])
     '''
 
     sabores_veganos=[]
@@ -34,5 +47,5 @@ def separar_sabores(sabores):
     return sabores_veganos, sabores_celiacos
 
 import doctest
-doctest.testmod()
+print(doctest.testmod())
                     
