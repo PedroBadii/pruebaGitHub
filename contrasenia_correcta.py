@@ -1,3 +1,4 @@
+#EJERCICIO ENTREGADO/TERMINADO
 '''
 Definir una función en Python que recibe un string y valida que sea una clave
 correcta. Para que sea correcta debe tener
@@ -20,6 +21,8 @@ def clave_correcta(clave):
     >>> clave_correcta('Pikachu&2')
     False
     >>> clave_correcta('1$aA')
+    False
+    >>> clave_correcta('1asDSA$$$asdfasdf')
     False
     '''
     valido = True #este es el que se usa para cortar el while si encontramos algo mal

@@ -1,3 +1,4 @@
+#EJERCICIO EN PROCESO
 meses_31 = ['enero','marzo','mayo','julio','agosto','octubre', 'diciembre']
 meses_30 = ['abril','junio','septiembre','noviembre']
 
@@ -46,4 +47,4 @@ def main ():
 #main()
 
 import doctest
-doctest.testmod(verbose=True)
+print(doctest.testmod())

@@ -1,3 +1,4 @@
+#EJERCICIO EN PROCESO
 '''
 Dada una tupla anidada de sabores de helados y particularidades, del tipo:
 sabores = (("chocolate", ("v", "c")), ("dulce de leche"), ("limón", ("v")), ("frutilla", ("c"))
