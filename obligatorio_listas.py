@@ -1,4 +1,4 @@
-                     #-------------EJERCICIO EN PROCESO--------------#
+                     #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
 '''
 Dada una tupla anidada de sabores de helados y particularidades, del tipo:
 sabores = (("chocolate", ("v", "c")), ("dulce de leche"), ("limón", ("v")), ("frutilla", ("c"))
@@ -37,14 +37,14 @@ def separar_sabores(sabores):
     sabores_celiacos=[]
 
     for sabor in sabores:
-        if len(sabor)==2:
+        if len(sabor)==2: #si el sabor no es 'v' ni 'c' lo ignora, así puedo iterar sabor[1] sin error
             for i in sabor[1]:
                 if i=='v':
                     sabores_veganos.append(sabor[0])
                 elif i=='c':
                     sabores_celiacos.append(sabor[0])
 
-    return sabores_veganos, sabores_celiacos
+    return sabores_veganos, sabores_celiacos #devuelve tupla, fue aclarado en el campus
 
 import doctest
 print(doctest.testmod())
