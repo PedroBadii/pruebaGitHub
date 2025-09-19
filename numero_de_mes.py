@@ -1,4 +1,4 @@
-                     #-------------EJERCICIO PENDIENTE--------------#
+                     #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
 '''
 Escribir una función que reciba el número de un mes, y devuelva el nombre del mes.
 Por ejemplo, si la función recibe un "1", deberá devolver: "Enero"; si recibe un "2", deberá 
@@ -23,7 +23,7 @@ def numero_mes (numero):
     >>> numero_mes(13)
     'El año solo tiene doce meses'
     '''
-    meses: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', \
+    meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', \
             'Octubre', 'Noviembre', 'Diciembre']
 
     mes = ''

@@ -1,0 +1,48 @@
+                     #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
+'''
+Escribir una función que reciba una dirección de mail, y devuelva True ó False, en función de haber
+evaluado que dicha dirección está bien formada.
+Escribir una función que reciba una cadena de caracteres que representa una dirección de mail. La
+función deberá devolver True ó False, en función de haber evaluado que dicha dirección está bien
+formada.
+Se debe controla que:
+a. Que no contenga blancos
+b. Que sólo se utilicen letras y/o números para la parte del nombre, delante de la @
+c. Que haya exactamente una arroba
+d. Que los nombres de dominio sean: fi.uba.ar ó gmail.com
+'''
+
+def mail_correcto(mail):
+    '''
+    >>> mail_correcto('pbadii@fi.uba.ar')
+    True
+    >>> mail_correcto('pedrobadii25@gmail.com')
+    True
+    >>> mail_correcto('pedro.badii25@gmail.com')
+    False
+    >>> mail_correcto('pedrobadii@yahoo.com.ar')
+    False
+    >>> mail_correcto('arroba@@fi.uba.ar')
+    False
+    '''
+    correcto = True
+    nombre_mail = ''
+    i = 0
+    while mail[i] != '@' and i<len(mail):
+        nombre_mail += mail[i]
+        i += 1
+
+    dominio = mail[i:]
+    if dominio != '@fi.uba.ar' and dominio != '@gmail.com':
+        correcto = False
+
+    if not nombre_mail.isalnum(): #.isalnum() solo acepta a-z, A-Z, 0-9
+        correcto = False
+
+    return correcto
+
+import doctest
+print(doctest.testmod())
+
+    
+
