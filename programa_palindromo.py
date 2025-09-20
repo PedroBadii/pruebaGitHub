@@ -1,3 +1,4 @@
+                     #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
 '''
 Escribir un programa que solicite el ingreso de palabras ó frases, y a medida que se ingresan informar 
 si se
