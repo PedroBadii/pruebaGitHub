@@ -27,12 +27,16 @@ def mail_correcto(mail):
     '''
     correcto = True
     nombre_mail = ''
+
+    #-----primero separo el nombre del dominio del mail-----#
     i = 0
     while mail[i] != '@' and i<len(mail):
         nombre_mail += mail[i]
         i += 1
 
     dominio = mail[i:]
+                #-------------------------#
+                
     if dominio != '@fi.uba.ar' and dominio != '@gmail.com':
         correcto = False
 

@@ -16,11 +16,18 @@ def factorial(num):
     1
     >>> factorial(0)
     1
+    >>> factorial(-3)
+    0
+    >>> factorial(2.6)
+    0
     '''
-
     resultado = 1
-    for i in range(1, num+1):
-        resultado *= i
+    if num % 1 == 0 and num >= 0: #num tiene que ser entero y mayor o igual a 0
+        for i in range(1, num+1):
+            resultado *= i
+    else:
+        resultado = 0
+
     return resultado
 
 import doctest

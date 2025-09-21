@@ -15,7 +15,7 @@ def es_binario(num): #num es una cadena con numeros
     '''
     binario = True
     i = 0
-    while binario and i<6:
+    while binario and i<len(num):
         if num[i] != '1' and num[i] != '0':
             binario = False
         i += 1

@@ -1,8 +1,7 @@
                      #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
 '''
 Escribir un programa que solicite el ingreso de palabras ó frases, y a medida que se ingresan informar 
-si se
-trata de un palíndromo.
+si se trata de un palíndromo.
 Validar que la palabra ó frase ingresada, sólo este formada por caracteres alfabéticos y por espacios 
 en blanco.
 El ingreso de las palabras ó frases, terminará cuando el usuario de enter, sin ingresar nada.
@@ -10,7 +9,7 @@ La solución debe ser estructurada en funciones, que sigan los lineamientos de l
 estructurada. Reutilice el código de ejercicios anteriores.
 '''
 
-def limpiar_cadena(cadena): #est es para obtener una cadena nueva sin espacios ni mayúsculas
+def limpiar_cadena(cadena): #este es para obtener una cadena nueva sin espacios ni mayúsculas
     cadena_min = cadena.lower()
     cadena_mod = ''
     for i in cadena_min:

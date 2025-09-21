@@ -13,6 +13,8 @@ def es_palindromo(cadena):
     True
     >>> es_palindromo('nosoypalindromo')
     False
+    >>> es_palindromo('casi pero no gdonorepisac')
+    False
     '''
 
     #-----esto es para que la función tome frases con espacios----#
@@ -26,8 +28,9 @@ def es_palindromo(cadena):
     palindromo = True
     i = 0
 
-    while palindromo == True and (not cadena_mod[i] == cadena_mod[len(cadena_mod)-1-i]):
-        palindromo = False
+    while palindromo == True and i<len(cadena_mod):
+        if cadena_mod[i] != cadena_mod[len(cadena_mod)-1-i]:
+            palindromo = False
         i += 1
 
     return palindromo

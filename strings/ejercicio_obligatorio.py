@@ -8,7 +8,8 @@ meses_31 = ['enero','marzo','mayo','julio','agosto','octubre', 'diciembre']
 meses_30 = ['abril','junio','septiembre','noviembre']
 
 def anio_bisiesto (anio):
-    return anio % 4 == 0 and anio % 100 != 0 or anio % 400 == 0
+    return (anio % 4 == 0 and anio % 100 != 0) or anio % 400 == 0 #and tiene prioridad pero pongo \ 
+    #paréntesis para más claridad
 
 def mes_correcto(mes):
     return mes in meses_31 or mes in meses_30 or mes == 'febrero'
