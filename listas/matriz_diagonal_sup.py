@@ -1,3 +1,4 @@
+                     #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
 '''
 Escribir en Python una función que reciba una matriz cuadrada (lista de
 listas) de enteros y devuelva True si esa matriz es diagonal superior
