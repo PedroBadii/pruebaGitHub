@@ -1,4 +1,4 @@
-
+                     #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
 '''
 Pedir al usuario campo por campo el ingreso de personas, el mismo usuario debe poder decidir cuando parar
  de ingresar personas. Cada persona tiene un nombre, una edad, un dni y una o más comidas preferidas 
@@ -37,17 +37,22 @@ def ordenar_personas(dicc_personas):
     personas_ordenadas = {}
 
     orden = int(input('Gracias. Ingrese un código de orden para las personas ingresadas \n' \
-    '1 - Alfabéticamente por nombre' \
-    '2 - Edad' \
-    '3 - DNI' \
-    '4 - cantidad de letras que tiene la primera comida preferida'))
+    '1 - Alfabéticamente por nombre \n' 
+    '2 - Edad \n'
+    '3 - DNI \n'
+    '4 - cantidad de letras que tiene la primera comida preferida '))
 
-    ascendente = int(input('¿Desea que se ordene de manera ascendente? Prresione 1 para si, 0 para no'))
+    ascendente = int(input('¿Desea que se ordene de manera descendente? Presione 1 para si, 0 para no: '))
     
-    if 1<=orden<= 3:
-        personas_ordenadas = dict(sorted(dicc_personas.items(), key=lambda x: x[orden-1], reverse=ascendente))
+    if orden == 1:
+        personas_ordenadas = dict(sorted(dicc_personas.items(), key=lambda x: x[0], reverse=ascendente))
+    elif orden == 2:
+        personas_ordenadas = dict(sorted(dicc_personas.items(), key=lambda x: x[1][0], reverse=ascendente))
+    elif orden == 3:
+        personas_ordenadas = dict(sorted(dicc_personas.items(), key=lambda x: x[1][1], reverse=ascendente))
     elif orden == 4:
-        personas_ordenadas = dict(sorted(dicc_personas.items(), key=lambda x: len(x[orden-1]), reverse=ascendente))
+        personas_ordenadas = dict(sorted(dicc_personas.items(), key=lambda x: len(x[1][2][0]), \
+        reverse=ascendente))
     else:
         print('Ha ingresado una opción inválida. Se cierra el programa')
 
