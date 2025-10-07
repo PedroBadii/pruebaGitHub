@@ -11,7 +11,7 @@ def leer():
 
     maestro_nuevo = open('archivos de texto\\maestro_con_aumento.csv','w')
 
-    with open('archivos de texto\\maestro.csv') as archivo:
+    with open('archivos de texto\\maestro.csv') as archivo: #no recomendado para la materia
 
         for linea in archivo:
             nro_cliente, nombre, saldo = linea.strip('/n').split(',')
