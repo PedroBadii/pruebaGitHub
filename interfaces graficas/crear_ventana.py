@@ -17,7 +17,7 @@ def cadenaValida(cadena):
         if not cadena[i].isalpha():
             valida = False
         i += 1
-    
+   
     return valida
 
 def emailValido(email):
@@ -25,7 +25,7 @@ def emailValido(email):
 
     if len(email)>20:
         valido=False
-    
+   
     if email.count('@') != 1 or email[0]!='@' or email[-1] != '@':
         valido = False    
 
