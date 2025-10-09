@@ -1,6 +1,5 @@
 '''
-escribí una función que cree una ventana que tenga por título “Ingreso de Datos”, y que su tamaño sea 
-de 500 x 300 pixels.
+Ejercicio obligatorio de interfaces gráficas
 '''
 
 from tkinter import *
@@ -26,26 +25,28 @@ def emailValido(email):
     if len(email)>20:
         valido=False
     
-    if email.count('@') != 1 or email[0]!='@' or email[-1] != '@':
+    if email.count('@') != 1 or email[0]=='@' or email[-1] == '@':
         valido = False    
 
     return valido
 
 def validarDatos():
+    
     nombre = cuadroDeNombre.get()
     apellido = cuadroDeApellido.get()
     email = cuadroDeEmail.get()
-
+    
     if not cadenaValida(nombre):
         messagebox.showerror("Error", "El nombre no es válido.\nDebe tener solo letras y menos de 25 caracteres.")
-        return
+        
     if not cadenaValida(apellido):
         messagebox.showerror("Error", "El apellido no es válido.\nDebe tener solo letras y menos de 25 caracteres.")
-        return
+        
     if not emailValido(email):
         messagebox.showerror("Error", "El email no es válido.\nDebe tener una '@' en posición válida y menos de 20 caracteres.")
-        return
 
+    if cadenaValida(nombre) and cadenaValida(apellido) and emailValido(email):
+        messagebox.showinfo('Validador de datos', 'Los datos fueron enviados')
 
 
 raiz=Tk()
@@ -66,7 +67,7 @@ miLabel.pack()
 miFrame = Frame(raiz)
 miFrame.pack(expand=True)
 
-textoFrame = Label(miFrame, textvariable='Esto está en el frame')
+textoFrame = Label(miFrame, text='Esto está en el frame')
 textoFrame.grid(row=0, column=0, columnspan=2)
 
 
@@ -95,7 +96,6 @@ cuadroDeEmail.grid(row=3, column=1)
 
 botonEnviar = Button(raiz, text='Enviar', command=validarDatos)
 botonEnviar.pack()
-
 
 
 raiz.mainloop()
