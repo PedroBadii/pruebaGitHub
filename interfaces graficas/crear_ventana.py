@@ -1,3 +1,4 @@
+                     #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
 '''
 Ejercicio obligatorio de interfaces gráficas
 '''
