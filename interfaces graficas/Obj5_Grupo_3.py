@@ -8,16 +8,32 @@ def obtener_usuarios_claves():
     
     return dicc
 
-def login_valido(usuario, clave):
-
-    dicc = obtener_usuarios_claves()
+def login_valido(usuario, clave, dicc):
 
     if usuario in dicc and clave == dicc[usuario]:
         messagebox.showinfo('', 'Usuario y Clave correctos')
     else:
         messagebox.showerror('','Algunos de los datos ingresados es Incorrecto')
 
-def ventana_registro():
+def agregar_usuario(usuario_registro, clave_registro, dicc):
+
+    if not (usuario_registro == '' or clave_registro == ''):
+
+        if usuario_registro not in dicc:
+            dicc[usuario_registro] = clave_registro
+            messagebox.showinfo('Registro', 'Usuario registrado correctamente')
+        elif dicc[usuario_registro] != clave_registro:
+            dicc[usuario_registro] = clave_registro
+            messagebox.showinfo('Registro', 'Contraseña actualizada correctamente')
+        else:
+            messagebox.showwarning('Registro', 'El usuario ya existe con esa misma clave')
+
+    else:
+       messagebox.showerror('', 'Todos los campos son obligatorios') 
+
+    return dicc
+
+def ventana_registro(dicc):
 
     ventana_registro = Tk()
     ventana_registro.title('Nuevo usuario')
@@ -25,6 +41,9 @@ def ventana_registro():
     ventana_registro.geometry('300x130')
     ventana_registro.config(bg='blue')
     ventana_registro.iconbitmap("IMG_Grupo_3.ico")
+
+    ventana_registro.columnconfigure(0, weight=1)
+    ventana_registro.columnconfigure(1, weight=1)
 
     nuevo_usuario = Label(ventana_registro, text='Nuevo usuario: ')
     nuevo_usuario.grid(row=0, column=0, padx=5, pady=10, sticky='e')
@@ -38,7 +57,14 @@ def ventana_registro():
     clave_registro = Entry(ventana_registro, show='*')
     clave_registro.grid(row=1, column=1, pady=10, sticky='w')
 
+    crear_registro = Button(ventana_registro, text= 'Crear registro', width=12, command= lambda: agregar_usuario(usuario_registro.get(), clave_registro.get(), dicc))
+    crear_registro.grid(row=2, columnspan=2, pady=10)
+
+
+
 def crear_ventana():
+
+    dicc = obtener_usuarios_claves()
 
     ventana = Tk()
     ventana.title('Login Grupo 3')
@@ -62,16 +88,17 @@ def crear_ventana():
     clave = Entry(ventana, show='*')
     clave.grid(row=1, column=1, pady=10, sticky='w')
 
-    boton_enviar = Button(ventana, text="Ingresar", width=12, command=lambda:login_valido(usuario.get(), clave.get()))
+    boton_enviar = Button(ventana, text="Ingresar", width=12, command=lambda:login_valido(usuario.get(), clave.get(), dicc))
     boton_enviar.grid(row=2, column=0, pady=10)
 
-    boton_registrar = Button(ventana, text='Registrarse', command=lambda: ventana_registro())
+    boton_registrar = Button(ventana, text='Registrarse', command=lambda: ventana_registro(dicc))
     boton_registrar.grid(row=2, column=1, pady=10)
+
 
     ventana.mainloop()
 
 def main():
 
-   crear_ventana()
+    crear_ventana()
 
 main()
