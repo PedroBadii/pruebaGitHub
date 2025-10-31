@@ -1,3 +1,4 @@
+                     #-------------EJERCICIO TERMINADO/ENTREGADO--------------#
 '''
 En el programa “Camino a la fama”, los participantes muestran sus aptitudes: baile, canto, etc. Un jurado vota
 a los participantes colocando un puntaje del 1 al 10. Esto genera una lista de listas (cada sublista es una 
