@@ -4,7 +4,7 @@
 		{
 			"type": "cppbuild",
 			"label": "C/C++: gcc.exe build active file",
-			"command": "E:\\Descargas\\winlibs-x86_64-posix-seh-gcc-15.2.0-mingw-w64ucrt-13.0.0-r2\\mingw64\\bin\\gcc.exe",
+			"command": "gcc.exe",
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
