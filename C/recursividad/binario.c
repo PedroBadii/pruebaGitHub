@@ -17,8 +17,28 @@ es_binario(100000) -> true
 es_binario(100009) -> false
 */
 
-int binario ()
+#include <stdbool.h>
+#include <stdio.h>
+
+int es_binario (int num){
+
+    if (num == 0 || num == 1){
+        return true;
+    }
+
+    if (num % 10 != 0 && num % 10 != 1){
+        return false;
+    } else {
+        return es_binario (num / 10);
+    }
+}
 
 int main (){
-
+    int pruebas[] = {101, 2, 20, 1, 0, 100000, 100009};
+    int longitud_pruebas = sizeof(pruebas) / sizeof(pruebas[0]); //asi se calcula la longitud del arreglo
+    for (int i = 0; i<longitud_pruebas; i++){
+        bool resultado = es_binario(pruebas[i]);
+        printf("El numero %d es binario: %s\n",pruebas[i], resultado ? "true" : "false");
+    }
+    return 0;
 }
