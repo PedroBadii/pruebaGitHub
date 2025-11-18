@@ -107,9 +107,22 @@ def generar_dicc (ambas_copas):
             dicc_resultados[eq_local][EMPATADOS] += 1
             dicc_resultados[eq_vis][EMPATADOS] +=1
 
-    linea = ambas_copas.readline()
+        linea = ambas_copas.readline()
 
     return dicc_resultados
+
+    #--------PUNTO 3 ------#
+
+def ordenar_dicc(dicc): #dicc --> lista de tuplas ordenadas por partidos ganados
+    # dicc = {'Alemania': [1, 0, 0], 'Escocia': [0, 0, 1], 'Argentina': [1, 0, 0]}
+    # dicc.items() = ('Alemania',[1, 0, 0]) ('Escocia',[0, 0, 1]) ('Argentina',[1, 0, 0])
+    return sorted(dicc.items(), key= lambda x: x[1][0], reverse=True)
+
+
+def mostrar_dicc (resultados): #('Argentina', [1, 0, 0])
+    for equipo in resultados:
+        if equipo[1][0] > 0:
+            print(f'{equipo[0]:<15}{equipo[1][0]:>5}')
 
 def main ():
 
@@ -124,10 +137,15 @@ def main ():
     eurocopa.close()
     ambas_copas.close()
 
-    #PUNTO 2: (ambas copas sigue abierto)
+    #PUNTO 2:
 
     ambas_copas = open('Python\\archivos de texto\\ambas_copas.csv', 'r')
     dicc_resultados = generar_dicc(ambas_copas)
     ambas_copas.close()
+
+    #PUNTO 3:
+
+    resultados_ordenados = ordenar_dicc(dicc_resultados) #son tuplas
+    mostrar_dicc(resultados_ordenados)
 
 main()
