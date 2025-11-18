@@ -22,7 +22,7 @@ def leer(ar_ventas):
 
 def listar_archivo(): 
 
-    ar_ventas = open('archivos de texto\\ventas.csv','r') 
+    ar_ventas = open('Python\\archivos de texto\\ventas.csv','r') 
 
     cod_suc, cod_art, cant, imp = leer(ar_ventas) #luego de esto el cursor queda poscisionado en el final de la primera línea
     cant = int(cant) 
