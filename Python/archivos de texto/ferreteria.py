@@ -25,66 +25,77 @@ ambos archivos, agregando en cada línea SUC_1 o SUC_2, dependiendo de dónde pr
 archivo unificado, debe estar ordenado por día, y ante igualdad de día, en primer lugar, deben estar las 
 ventas de la sucursal 1.
 
-diccionario_reposicion = {001:['tornillos', 10], '002': ['tuercas', 20] }
+diccionario_reposicion = {1:['tornillos', 10], 2: ['tuercas', 20] }
 
 códigos de artículos como clave y una lista con dos valores: la descripción del artículo y el nivel de 
 ventas de cada artículo para solicitar reposición
 '''
-#NO FUNCIONA
-COD_PRODUCTO = 1
-CANT_VENTAS = 2
 
-def merge (ventas_1, ventas_2):
-    ventas_completas = open('\\ventas_completas.csv','w')
-    dicc_ventas_totales = {}
+DIA_MAYOR = 40
 
-    linea_v1 = ventas_1.readline().strip()
-    linea_v2= ventas_2.readline().strip()
+def leer (ventas):
 
-    while linea_v1 or linea_v2 :
+    linea = ventas.readline()
 
-        #si solo hay datos en linea_v2 o si el dia linea_v2 es mas chico que el de linea_v1
-        if not (linea_v1) or (int(linea_v1.split(',')[0]) >= int(linea_v2.split(',')[0])): 
+    if linea: #si la linea es distinto de vacío
+        linea = linea.rstrip()
+    else:
+        linea = str(DIA_MAYOR)+',,'
 
-            #en ese caso escribo linea_v2
-            ventas_completas.write(f'{linea_v2}, SUC_2\n')
-            linea_v2 = ventas_2.readline().strip()
-
-            codigo = linea_v2.split(',')[COD_PRODUCTO]
-            cant_ventas = linea_v2.split(',')[COD_PRODUCTO]
-
-            #agrego las ventas en el dicc, si no estaba lo agrego con el codigo
-            if codigo not in dicc_ventas_totales:
-                dicc_ventas_totales[codigo] = linea_v2.split(',')[CANT_VENTAS]
-            else:
-                dicc_ventas_totales[codigo] += linea_v2.split(',')[CANT_VENTAS]
-
-        elif (not linea_v2) or (int(linea_v1.split(',')[0]) <= int(linea_v2.split(',')[0])):
-
-            ventas_completas.write(f'{linea_v1}, SUC_1\n')
-            linea_v1 = ventas_1.readline().strip()
-
-            codigo = linea_v1.split(',')[COD_PRODUCTO]
-            cant_ventas = linea_v2.split(',')[COD_PRODUCTO]
-
-            if codigo not in dicc_ventas_totales:
-                dicc_ventas_totales[codigo] = linea_v2.split(',')[CANT_VENTAS]
-            else:
-                dicc_ventas_totales[codigo] += linea_v2.split(',')[CANT_VENTAS]
+    datos_linea = int(linea.split(','))
     
-    ventas_completas.close()
-    ventas_1.close()
-    ventas_2.close
+    #opcion 1: hay datos: ['1', '176','12']
+    #opcion 2: no hay datos: ['40', '', '']
 
-    return dicc_ventas_totales
+    return datos_linea
+
+
+def merge (ventas_1, ventas_2, ventas_completas, dicc_rep):
+
+    dicc_ventas= {}
+     
+    dia_1, cod_prod_1, u_vendidas_1 = leer(ventas_1)
+    dia_2, cod_prod_2, u_vendidas_2 = leer(ventas_2)
+
+    while (dia_1 < DIA_MAYOR) or (dia_2 < DIA_MAYOR): #mientras haya datos en algun archivo
+
+        if dia_1 >= dia_2:
+            ventas_completas.write(f'{dia_1},{cod_prod_1},{u_vendidas_1}, SUC_1')
+
+            if cod_prod_1 not in dicc_ventas: #agrego las ventas al dicc
+                dicc_ventas[cod_prod_1] = u_vendidas_1
+            else:
+                dicc_ventas[cod_prod_1] += u_vendidas_1
+
+            dia_1, cod_prod_1, u_vendidas_1 = leer(ventas_1) #leo la proxima linea
+
+        elif dia_2  > dia_1:
+            ventas_completas.write(f'{dia_2},{cod_prod_2},{u_vendidas_2}, SUC_2')
+
+            if cod_prod_2 not in dicc_ventas:
+                dicc_ventas[cod_prod_2] = u_vendidas_2
+            else:
+                dicc_ventas[cod_prod_2] += u_vendidas_2
+
+            dia_2, cod_prod_2, u_vendidas_2 = leer(ventas_2)
+
+    return dicc_ventas
+
+'''
+dicc_rep = {001:['tornillos', 10], '002': ['tuercas', 20] }
+dicc_ventas = {1: }
+
+'''
+def solicitar_rep (dicc_rep, dicc_ventas):
+
 
 
 def main ():
     dicc_rep = {1:['tornillos', 10], 2: ['tuercas', 20]}
-    ventas_1 = open('\\ventas1.csv','r')
-    ventas_2 = open('\\ventas2.csv','r')
-    
-    #merge crea dicc de ventas totales y el archivo merge de ambos
-    dicc_ventas_totales = merge(ventas_1,ventas_2) 
+    ventas_1 = open('ventas1.csv', 'r')
+    ventas_2 = open('ventas2.csv', 'r')
+    ventas_completas = open('ventas_completas.csv', 'w')
 
+    dicc_ventas = merge (ventas_1, ventas_2, ventas_completas, dicc_rep)
 
+    solicitar_rep (dicc_rep, dicc_ventas)
