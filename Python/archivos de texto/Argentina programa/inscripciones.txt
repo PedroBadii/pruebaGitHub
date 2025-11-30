@@ -1,0 +1,5 @@
+Programacion Front End-2-1-1-0
+Testing-3-1-1-1
+Programacion Back End-4-0-2-2
+Java-5-1-2-2
+Python-5-0-3-2

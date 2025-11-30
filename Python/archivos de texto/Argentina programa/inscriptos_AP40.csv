@@ -1,0 +1,19 @@
+1001,SEC,no,Java,101
+1002,UNI,si,Java,101
+1003,SEC,no,Java,101
+1004,PRI,si,Java,102
+1005,UNI,no,Java,102
+1006,SEC,si,Programacion Back End,201
+1007,UNI,si,Programacion Back End,201
+1008,SEC,si,Programacion Back End,202
+1009,UNI,no,Programacion Back End,202
+1010,SEC,no,Programacion Front End,301
+1011,PRI,no,Programacion Front End,301
+1012,SEC,si,Python,401
+1013,UNI,si,Python,401
+1014,SEC,si,Python,401
+1015,SEC,no,Python,402
+1016,UNI,si,Python,402
+1017,UNI,no,Testing,501
+1018,PRI,si,Testing,501
+1019,SEC,no,Testing,501

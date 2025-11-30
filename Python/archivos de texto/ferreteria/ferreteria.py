@@ -39,15 +39,15 @@ def leer (ventas):
 
     if linea: #si la linea es distinto de vacío
         linea = linea.rstrip()
+        dia, codigo, cant_vendida = linea.split(',')
+        datos = [int(dia), int(codigo), int(cant_vendida)]
     else:
-        linea = str(DIA_MAYOR)+',,'
+        datos = [DIA_MAYOR, 0, 0]
 
-    datos_linea = int(linea.split(','))
-    
     #opcion 1: hay datos: ['1', '176','12']
     #opcion 2: no hay datos: ['40', '', '']
 
-    return datos_linea
+    return datos
 
 
 def merge (ventas_1, ventas_2, ventas_completas, dicc_rep):
@@ -59,8 +59,8 @@ def merge (ventas_1, ventas_2, ventas_completas, dicc_rep):
 
     while (dia_1 < DIA_MAYOR) or (dia_2 < DIA_MAYOR): #mientras haya datos en algun archivo
 
-        if dia_1 >= dia_2:
-            ventas_completas.write(f'{dia_1},{cod_prod_1},{u_vendidas_1}, SUC_1')
+        if dia_1 <= dia_2:
+            ventas_completas.write(f'{dia_1},{cod_prod_1},{u_vendidas_1}, SUC_1\n')
 
             if cod_prod_1 not in dicc_ventas: #agrego las ventas al dicc
                 dicc_ventas[cod_prod_1] = u_vendidas_1
@@ -69,8 +69,8 @@ def merge (ventas_1, ventas_2, ventas_completas, dicc_rep):
 
             dia_1, cod_prod_1, u_vendidas_1 = leer(ventas_1) #leo la proxima linea
 
-        elif dia_2  > dia_1:
-            ventas_completas.write(f'{dia_2},{cod_prod_2},{u_vendidas_2}, SUC_2')
+        elif dia_2  < dia_1:
+            ventas_completas.write(f'{dia_2},{cod_prod_2},{u_vendidas_2}, SUC_2\n')
 
             if cod_prod_2 not in dicc_ventas:
                 dicc_ventas[cod_prod_2] = u_vendidas_2
@@ -82,20 +82,37 @@ def merge (ventas_1, ventas_2, ventas_completas, dicc_rep):
     return dicc_ventas
 
 '''
-dicc_rep = {001:['tornillos', 10], '002': ['tuercas', 20] }
-dicc_ventas = {1: }
+ejemplo
+dicc_rep = {1:['tornillos', 10], 2: ['tuercas', 20] }
+dicc_ventas = {1: 15, 2: 19}
 
 '''
 def solicitar_rep (dicc_rep, dicc_ventas):
+
+    U_VENDIDAS = 1
+    DESCRIPCION = 0
+
+    for codigo in dicc_rep:
+
+        if codigo in dicc_ventas:
+
+            if dicc_ventas[codigo] > dicc_rep[codigo][U_VENDIDAS]:
+                print(f'Se deben reponer {dicc_ventas[codigo]-dicc_rep[codigo][U_VENDIDAS]} unidades de {dicc_rep[codigo][DESCRIPCION]}')
 
 
 
 def main ():
     dicc_rep = {1:['tornillos', 10], 2: ['tuercas', 20]}
-    ventas_1 = open('ventas1.csv', 'r')
-    ventas_2 = open('ventas2.csv', 'r')
-    ventas_completas = open('ventas_completas.csv', 'w')
+    ventas_1 = open('Python\\archivos de texto\\ferreteria\\ventas1.csv', 'r')
+    ventas_2 = open('Python\\archivos de texto\\ferreteria\\ventas2.csv', 'r')
+    ventas_completas = open('Python\\archivos de texto\\ferreteria\\ventas_completas.csv', 'w')
 
     dicc_ventas = merge (ventas_1, ventas_2, ventas_completas, dicc_rep)
 
+    ventas_1.close()
+    ventas_2.close()
+    ventas_completas.close()
+
     solicitar_rep (dicc_rep, dicc_ventas)
+
+main()
