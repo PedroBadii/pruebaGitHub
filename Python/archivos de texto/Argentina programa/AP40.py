@@ -103,7 +103,7 @@ def alumnos_estudios (inscriptos):
         
     return dicc_estudios   
             
-#-----PUNTO B-----#
+#-----PUNTO C-----#
 
 def ordenar(dicc):
     return sorted(dicc.items(), key=lambda x: (x[1][PRI] + x[1][SEC] + x[1][UNI]))
