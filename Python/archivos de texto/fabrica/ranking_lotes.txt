@@ -1,0 +1,5 @@
+Lote: DDD01 - Total: 2000
+Lote: CCC01 - Total: 1050
+Lote: BBB01 - Total: 500
+Lote: AAA02 - Total: 200
+Lote: AAA01 - Total: 100
